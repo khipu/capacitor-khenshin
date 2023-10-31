@@ -42,6 +42,25 @@ post_install do |installer|
 end
 ```
 
+## Android
+
+For Android to be able to locate the khenshin aar you need to add the maven repository of khenshin to the allproyects section of the android/build.gradle file.
+
+Something like:
+
+```
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://dev.khipu.com/nexus/content/repositories/khenshin' }
+    }
+}
+```
+
+Note that google() and mavenCentral() repos are usually already added.
+
+
 ## Usage
 
 Inside a view import the capacitor-khenshin module
@@ -51,11 +70,13 @@ import {CapacitorKhenshin} from 'capacitor-khenshin';
 ```
     
 
-Then you can call khenshin using
+Then you can call khenshin using a [paymentId generated with the Khipu API](https://github.com/khipu/khipu-inside-demo#creaci%C3%B3n-de-la-solicitud-de-pago-en-el-servidor-del-cobrador) 
 
 ```typescript
-const result = await CapacitorKhenshin.startPaymentById({paymentId: '<paymentId>'});
-console.log(result);
+const paymentResult = await CapacitorKhenshin.startPaymentById({paymentId: '<paymentId>'});
+console.log(paymentResult);
 ```
 
 The `startPaymentById` promise will return after the payment is completed
+
+The `paymentResult` object will contain a `result` field with values `OK` or `FAIL`. If the result is `FAIL` then the payment failed for sure. If the result is `OK` then you have to wait for the [instant notification](https://github.com/khipu/khipu-inside-demo#recepci%C3%B3n-de-la-notificaci%C3%B3n-de-conciliaci%C3%B3n-en-el-servidor-del-cobrador) to finish the process.

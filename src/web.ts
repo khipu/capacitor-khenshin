@@ -86,7 +86,7 @@ export class CapacitorKhenshinWeb
             }, (warningResult: any) => {
                 resolve({result: 'OK', extra: warningResult});
             }, (failureResult: any) => {
-                reject({result: 'FAIL', extra: failureResult});
+                resolve({result: 'FAIL', extra: failureResult});
             });
             this.khipu.start(paymentId);
         })

@@ -51,7 +51,7 @@ public class CapacitorKhenshinPlugin: CAPPlugin {
             NSLog("FAILURE")
             call.resolve([
                         "result": "FAIL",
-                        "exitURL": ["exitURL": exitURL?.absoluteString]
+                        "extra": ["exitURL": exitURL?.absoluteString]
                     ])
         }, animated: false)
 
