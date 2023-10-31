@@ -1,0 +1,1 @@
+# Capacitor plugin for Khenshin

@@ -1,0 +1,50 @@
+{
+  "api": {
+    "name": "CapacitorKhenshinPlugin",
+    "slug": "capacitorkhenshinplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "startPaymentById",
+        "signature": "(options: PaymentOptions) => Promise<any>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "PaymentOptions"
+          }
+        ],
+        "returns": "Promise<any>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "PaymentOptions"
+        ],
+        "slug": "startpaymentbyid"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "PaymentOptions",
+      "slug": "paymentoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "paymentId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [],
+  "pluginConfigs": []
+}
