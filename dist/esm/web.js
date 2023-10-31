@@ -46,7 +46,7 @@ export class CapacitorKhenshinWeb extends WebPlugin {
         }
     }
     async startKhipu(paymentId) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             // @ts-ignore
             this.khipu = new Khipu();
             const options = {
@@ -65,11 +65,11 @@ export class CapacitorKhenshinWeb extends WebPlugin {
                 },
             };
             this.khipu.init(options, (successResult) => {
-                resolve(successResult);
+                resolve({ result: 'OK', extra: successResult });
             }, (warningResult) => {
-                resolve(warningResult);
+                resolve({ result: 'OK', extra: warningResult });
             }, (failureResult) => {
-                reject(failureResult);
+                resolve({ result: 'FAIL', extra: failureResult });
             });
             this.khipu.start(paymentId);
         });

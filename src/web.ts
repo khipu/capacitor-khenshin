@@ -63,7 +63,7 @@ export class CapacitorKhenshinWeb
     }
 
     async startKhipu(paymentId: string): Promise<any> {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             // @ts-ignore
             this.khipu = new Khipu();
             const options = {
