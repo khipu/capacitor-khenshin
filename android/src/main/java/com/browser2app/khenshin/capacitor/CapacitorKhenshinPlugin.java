@@ -64,8 +64,8 @@ public class CapacitorKhenshinPlugin extends Plugin {
         Log.d(TAG, "resultCode: " + result.getResultCode());
         Log.d(TAG, "data: " + result.getData());
         JSObject ret = new JSObject();
-        ret.put("resultCode", result.getResultCode());
-        ret.put("data", result.getData().toString());
+        ret.put("result", result.getResultCode() == -1 ? "OK" : "FAIL");
+        ret.put("extra", result.getData().toString());
         call.resolve(ret);
     }
 }

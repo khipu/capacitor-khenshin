@@ -23,7 +23,7 @@ public class CapacitorKhenshinPlugin: CAPPlugin {
             builder?.continueButtonTextTintColor = UIColor.white
             builder?.navigationBarTextTint = UIColor.black
             builder?.barTintColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1)
-            
+
             var processHeader = Bundle.main.loadNibNamed("CustomPaymentProcessHeader", owner: nil, options: nil)?.first
             if (processHeader != nil) {
                 builder?.processHeader = processHeader as! (any UIView & ProcessHeader)
@@ -44,14 +44,14 @@ public class CapacitorKhenshinPlugin: CAPPlugin {
         KhenshinInterface.startEngine(withPaymentExternalId: paymentId, userIdentifier: "", isExternalPayment: true, success: { (exitURL: URL?) in
             NSLog("SUCCESS")
             call.resolve([
-                        "data": "SUCCESS",
-                        "exitURL": exitURL?.absoluteString
+                        "result": "OK",
+                        "extra": ["exitURL": exitURL?.absoluteString]
                     ])
         }, failure: { (exitURL: URL?) in
             NSLog("FAILURE")
             call.resolve([
-                        "data": "FAILURE",
-                        "exitURL": exitURL?.absoluteString
+                        "result": "FAIL",
+                        "exitURL": ["exitURL": exitURL?.absoluteString]
                     ])
         }, animated: false)
 
